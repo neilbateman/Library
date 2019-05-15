@@ -25,20 +25,24 @@ namespace Library
 
     public void Configure(IApplicationBuilder app)
     {
-      app.UseDeveloperExceptionPage();//this is the debugger for Razor view
+      //app.UseDeveloperExceptionPage();//this is the debugger for Razor view
       app.UseMvc(routes =>
       {
         routes.MapRoute(
           name: "default",
           template: "{controller=Home}/{action=Index}/{id?}");
 
-          app.UseStaticFiles();
-      });
+      //     app.UseMvc(routes =>
+      // {
+      //   routes.MapRoute(
+      //     name: "default",
+      //     template: "{controller=Home}/{action=Index}/{id?}");
+      // });
 
         app.Run(async (context) =>
         {
           await context.Response.WriteAsync("Something went wrong!");
-        });
+        });});
 
     }
   }

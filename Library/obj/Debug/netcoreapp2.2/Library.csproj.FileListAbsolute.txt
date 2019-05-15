@@ -5,10 +5,7 @@
 /Users/Guest/Desktop/Library/Library/bin/Debug/netcoreapp2.2/Library.pdb
 /Users/Guest/Desktop/Library/Library/obj/Debug/netcoreapp2.2/Library.csprojAssemblyReference.cache
 /Users/Guest/Desktop/Library/Library/obj/Debug/netcoreapp2.2/Library.csproj.CoreCompileInputs.cache
-/Users/Guest/Desktop/Library/Library/obj/Debug/netcoreapp2.2/Library.RazorAssemblyInfo.cache
-/Users/Guest/Desktop/Library/Library/obj/Debug/netcoreapp2.2/Library.RazorAssemblyInfo.cs
 /Users/Guest/Desktop/Library/Library/obj/Debug/netcoreapp2.2/Library.AssemblyInfoInputs.cache
 /Users/Guest/Desktop/Library/Library/obj/Debug/netcoreapp2.2/Library.AssemblyInfo.cs
-/Users/Guest/Desktop/Library/Library/obj/Debug/netcoreapp2.2/Library.RazorTargetAssemblyInfo.cache
 /Users/Guest/Desktop/Library/Library/obj/Debug/netcoreapp2.2/Library.dll
 /Users/Guest/Desktop/Library/Library/obj/Debug/netcoreapp2.2/Library.pdb

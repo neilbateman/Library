@@ -11,7 +11,7 @@ namespace Library.Tests
 
     public void Dispose()
     {
-      // Book.ClearAll();
+      Book.ClearAll();
     }
 
     public BookTest()
@@ -22,79 +22,92 @@ namespace Library.Tests
     [TestMethod]
     public void BookConstructor_CreatesInstanceOfBook_Book()
     {
-
+      Book newBook = new Book("test", 1);
+      Assert.AreEqual(typeof(Book), newBook.GetType());
     }
-    //
-    // [TestMethod]
-    // public void GetTitle_ReturnsTitle_String()
-    // {
-    //
-    // }
-    //
-    // [TestMethod]
-    // public void SetTitle_SetTitle_String()
-    // {
-    //
-    // }
-    //
-    // [TestMethod]
-    // public void GetAll_ReturnsEmptyList_BookList()
-    // {
-    //
-    // }
-    //
-    // [TestMethod]
-    // public void GetAll_ReturnsBooks_BookList()
-    // {
-    //
-    // }
-    //
-    // [TestMethod]
-    // public void Find_ReturnsCorrectBookFromDatabase_Book()
-    // {
-    //
-    // }
-    //
-    // [TestMethod]
-    // public void Equals_ReturnsTrueIfTitlesAreTheSame_Book()
-    // {
-    //
-    // }
-    //
-    // [TestMethod]
-    // public void Save_SavesToDatabase_BookList()
-    // {
-    //
-    // }
-    //
-    // [TestMethod]
-    // public void Save_AssignsIdToObject_Id()
-    // {
-    //
-    // }
-    //
-    // [TestMethod]
-    // public void Edit_UpdatesBookInDatabase_String()
-    // {
-    //
-    // }
-    //
-    // [TestMethod]
-    // public void DeleteBook_DeletesBookAssociationsFromDatabase_BookList()
-    // {
-    //
-    // }
-    //
-    // [TestMethod]
-    // public void GetAuthors_ReturnsAllBookAuthors_AuthorList()
-    // {
-    //
-    // }
-    // [TestMethod]
-    // public void AddAuthor_AddsAuthorToBook_AuthorList()
-    // {
-    //
-    // }
+
+    [TestMethod]
+    public void GetTitle_ReturnsTitle_String()
+    {
+      Book newBook = new Book("test", 1);
+      Assert.AreEqual("test", newBook.Title);
+    }
+
+    [TestMethod]
+    public void GetCount_ReturnsBookCopyNumber_1()
+    {
+      Book newBook = new Book("test", 3);
+      Assert.AreEqual(3, newBook.CopyNumber);
+    }
+
+    [TestMethod]
+    public void SetTitle_SetTitle_String()
+    {
+      Book newBook = new Book("test", 1);
+      newBook.Title = "test2";
+      Assert.AreEqual("test2", newBook.Title);
+    }
+
 
   }
+
+  // [TestMethod]
+  // public void GetAll_ReturnsEmptyList_BookList()
+  // {
+  //
+  // }
+  //
+  // [TestMethod]
+  // public void GetAll_ReturnsBooks_BookList()
+  // {
+  //
+  // }
+  //
+  // [TestMethod]
+  // public void Find_ReturnsCorrectBookFromDatabase_Book()
+  // {
+  //
+  // }
+  //
+  // [TestMethod]
+  // public void Equals_ReturnsTrueIfTitlesAreTheSame_Book()
+  // {
+  //
+  // }
+  //
+  // [TestMethod]
+  // public void Save_SavesToDatabase_BookList()
+  // {
+  //
+  // }
+  //
+  // [TestMethod]
+  // public void Save_AssignsIdToObject_Id()
+  // {
+  //
+  // }
+  //
+  // [TestMethod]
+  // public void Edit_UpdatesBookInDatabase_String()
+  // {
+  //
+  // }
+  //
+  // [TestMethod]
+  // public void DeleteBook_DeletesBookAssociationsFromDatabase_BookList()
+  // {
+  //
+  // }
+  //
+  // [TestMethod]
+  // public void GetAuthors_ReturnsAllBookAuthors_AuthorList()
+  // {
+  //
+  // }
+  // [TestMethod]
+  // public void AddAuthor_AddsAuthorToBook_AuthorList()
+  // {
+  //
+  // }
+
 }

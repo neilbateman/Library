@@ -10,12 +10,33 @@ namespace Library.Tests
   {
     public void Dispose()
     {
-      // Author.ClearAll();
-      // Book.ClearAll();
+      Author.ClearAll();
+      Book.ClearAll();
     }
     public AuthorTest()
     {
       DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=library_tests;";
+    }
+
+    [TestMethod]
+    public void GetAll_ReturnsAllAuthorObjects_AuthorList()
+    {
+      //Arrange
+      string firstName1 = "Semor";
+      string lastName1 = "Butts";
+      string firstName2 = "Mike";
+      string lastName2 = "Hawk";
+      Author newAuthor1 = new Author(firstName1, lastName1);
+      newAuthor1.Save();
+      Author newAuthor2 = new Author(firstName2, lastName2);
+      newAuthor2.Save();
+      List<Author> newAuthor = new List<Author> { newAuthor1, newAuthor2 };
+
+      //Act
+      List<Author> result = Author.GetAll();
+
+      //Assert
+      CollectionAssert.AreEqual(newAuthor, result);
     }
     // [TestMethod]
     // public void Equals_ReturnsTrueIfNamesAreTheSame_Author()
