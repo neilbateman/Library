@@ -20,28 +20,49 @@ namespace Library.Models
       CopyNumber = copyNumber;
     }
 
-    // public void Save()
-    //   {
-    //     MySqlConnection conn = DB.Connection();
-    //     conn.Open();
-    //     var cmd = conn.CreateCommand() as MySqlCommand;
-    //     cmd.CommandText = @"INSERT INTO books (title, copy_number) VALUES (@title, @copy_number);";
-    //     MySqlParameter title = new MySqlParameter();
-    //     title.ParameterName = "@title";
-    //     title.Value = this.Name;
-    //     cmd.Parameters.Add(title);
-    //     MySqlParameter copy_number = new MySqlParameter();
-    //     copy_number.ParameterName = "@copy_number";
-    //     copy_number.Value = this.CopyNumber;
-    //     cmd.Parameters.Add(copy_number);
-    //     cmd.ExecuteNonQuery();
-    //     _id = (int) cmd.LastInsertedId; // <-- This line is new!
-    //     conn.Close();
-    //     if (conn != null)
-    //     {
-    //       conn.Dispose();
-    //     }
-    //   }
+    public override bool Equals(System.Object otherBook)
+    {
+      if (!(otherBook is Book))
+      {
+        return false;
+      }
+      else
+      {
+        Book newBook = (Book) otherBook;
+        bool idEquality = this.Id == newBook.Id;
+        bool titleEquality = this.Title == newBook.Title;
+        bool copyNumberEquality = this.CopyNumber == newBook.CopyNumber;
+        return (idEquality && titleEquality && copyNumberEquality);
+      }
+    }
+    public static Book Find(int id)
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"SELECT * FROM books WHERE id = (@searchId);";
+      MySqlParameter searchId = new MySqlParameter();
+      searchId.ParameterName = "@searchId";
+      searchId.Value = id;
+      cmd.Parameters.Add(searchId);
+      var rdr = cmd.ExecuteReader() as MySqlDataReader;
+      int bookId = 0;
+      string title = "";
+      int copyNumber = 0;
+      while(rdr.Read())
+      {
+        bookId = rdr.GetInt32(0);
+        title = rdr.GetString(1);
+        copyNumber = rdr.GetInt32(2);
+      }
+      Book newBook = new Book(title, copyNumber, bookId);
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+      return newBook;
+    }
 
     public void Save()
     {

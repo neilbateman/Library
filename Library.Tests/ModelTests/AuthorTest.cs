@@ -38,6 +38,20 @@ namespace Library.Tests
       //Assert
       CollectionAssert.AreEqual(newAuthor, result);
     }
+
+    [TestMethod]
+    public void Find_ReturnsAuthorInDatabase_Author()
+    {
+      //Arrange
+      Author testAuthor = new Author("John", "Wayne");
+      testAuthor.Save();
+
+      //Act
+      Author foundAuthor = Author.Find(testAuthor.Id);
+
+      //Assert
+      Assert.AreEqual(testAuthor, foundAuthor);
+    }
     // [TestMethod]
     // public void Equals_ReturnsTrueIfNamesAreTheSame_Author()
     // {
@@ -72,11 +86,6 @@ namespace Library.Tests
     //
     // }
     //
-    // [TestMethod]
-    // public void Find_ReturnsAuthorInDatabase_Author()
-    // {
-    //
-    // }
     //
     // [TestMethod]
     // public void DeleteAuthor_DeletesAuthorAssociationsFromDatabase_AuthorList()

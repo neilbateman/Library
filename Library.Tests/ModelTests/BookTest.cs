@@ -49,65 +49,65 @@ namespace Library.Tests
     }
 
 
-  }
+    [TestMethod]
+    public void Find_ReturnsCorrectBookFromDatabase_Book()
+    {
+      Book testBook = new Book("John", 2);
+      testBook.Save();
 
-  // [TestMethod]
-  // public void GetAll_ReturnsEmptyList_BookList()
-  // {
-  //
-  // }
-  //
-  // [TestMethod]
-  // public void GetAll_ReturnsBooks_BookList()
-  // {
-  //
-  // }
-  //
-  // [TestMethod]
-  // public void Find_ReturnsCorrectBookFromDatabase_Book()
-  // {
-  //
-  // }
-  //
-  // [TestMethod]
-  // public void Equals_ReturnsTrueIfTitlesAreTheSame_Book()
-  // {
-  //
-  // }
-  //
-  // [TestMethod]
-  // public void Save_SavesToDatabase_BookList()
-  // {
-  //
-  // }
-  //
-  // [TestMethod]
-  // public void Save_AssignsIdToObject_Id()
-  // {
-  //
-  // }
-  //
-  // [TestMethod]
-  // public void Edit_UpdatesBookInDatabase_String()
-  // {
-  //
-  // }
-  //
-  // [TestMethod]
-  // public void DeleteBook_DeletesBookAssociationsFromDatabase_BookList()
-  // {
-  //
-  // }
-  //
-  // [TestMethod]
-  // public void GetAuthors_ReturnsAllBookAuthors_AuthorList()
-  // {
-  //
-  // }
-  // [TestMethod]
-  // public void AddAuthor_AddsAuthorToBook_AuthorList()
-  // {
-  //
-  // }
+      //Act
+      Book foundBook = Book.Find(testBook.Id);
 
+      //Assert
+      Assert.AreEqual(testBook.Title, foundBook.Title);
+      Assert.AreEqual(testBook.CopyNumber, foundBook.CopyNumber);
+    }
+
+    [TestMethod]
+    public void Save_SavesToDatabase_BookList()
+    {
+      //Arrange
+      Book testBook = new Book("War & Peace", 14);
+
+      //Act
+      testBook.Save();
+      List<Book> result = Book.GetAll();
+      List<Book> bookList = new List<Book>{testBook};
+
+      //Assert
+      CollectionAssert.AreEqual(bookList, result);
+      CollectionAssert.AreEqual(bookList, result);
+
+    }
+
+    //
+    // [TestMethod]
+    // public void Save_AssignsIdToObject_Id()
+    // {
+    //
+    // }
+    //
+    // [TestMethod]
+    // public void Edit_UpdatesBookInDatabase_String()
+    // {
+    //
+    // }
+    //
+    // [TestMethod]
+    // public void DeleteBook_DeletesBookAssociationsFromDatabase_BookList()
+    // {
+    //
+    // }
+    //
+    // [TestMethod]
+    // public void GetBooks_ReturnsAllBookAuthors_AuthorList()
+    // {
+    //
+    // }
+    // [TestMethod]
+    // public void AddAuthor_AddsAuthorToBook_AuthorList()
+    // {
+    //
+    // }
 }
+  }
